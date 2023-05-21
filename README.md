@@ -9,11 +9,11 @@ Let us consider the following algorithm to compute the optimal multicut in trees
 
 1.  $f\gets 0$, $D\gets \emptyset$
 2.  For each vertex $v$ in nonincreasing order of depth
-  a.  For each pair $(s_i, t_i)$ such that $lca(s_i, t_i) = v$, greedily route integral flow from $s_i$ to $t_i$
-  b.  Add to $D$ all edges that have been saturated at the previous step
+    a.  For each pair $(s_i, t_i)$ such that $lca(s_i, t_i) = v$, greedily route integral flow from $s_i$ to $t_i$
+    b.  Add to $D$ all edges that have been saturated at the previous step
 3.  $e_1, \ldots , e_l \gets$ the ordered list of edges in $D$
 4.  For $j=l$ downto $1$
-  c.  If $D-\{e_j\}$ is a multicut in $G$, then $D\gets D-\{e_j\}$
+    c.  If $D-\{e_j\}$ is a multicut in $G$, then $D\gets D-\{e_j\}$
 5.  Output $D$
 
 
