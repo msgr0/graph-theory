@@ -5,7 +5,7 @@
 
 ## Exercise 1
 
-Let us consider the following algorithm to compute the optimal multicut in trees (Algorithm 18.4, https://doi.org/10.1007/978-3-662-04565-7).
+Let us consider the following algorithm to compute the optimal multicut in trees (Algorithm 18.4, [Approximation Algorithms](https://doi.org/10.1007/978-3-662-04565-7)).
 
 1.  $f\gets 0$, $D\gets \emptyset$
 2.  For each vertex $v$ in nonincreasing order of depth
@@ -30,6 +30,6 @@ Prove that, if steps 4 and c are removed, then the approximation factor is unbou
 
 ## Exercise 3
 
-Consider the algorithm for Max Independent Set for graphs with bounded twin-width described in http://arxiv.org/abs/2007.14161
+Consider the algorithm for Max Independent Set for graphs with bounded twin-width described in [Twin-width III: Max Independent Set, Min Dominating Set, and Coloring](http://arxiv.org/abs/2007.14161)
 
 Provide a complete description of an algorithm to solve Max *Weighted* Independent Set and prove its correctness (you also have to prove that it computes an optimal independent set.
