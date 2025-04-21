@@ -26,7 +26,8 @@ Prove that, if step b is modified so that only one edge is added to $D$, then th
 
 ## Exercise 2
 
-Prove that, if steps 4 and c are removed, then the approximation factor is unbounded.
+Let $G$ be an undirected graph $G$ with $n$ vertices and minimum degree $k$.
+Prove that $G$ has a matching with at least $\min\{ k , \lfloor \frac{n}{2} \rfloor\}$ edges.
 
 ## Exercise 3
 
