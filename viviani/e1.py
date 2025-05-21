@@ -2,6 +2,7 @@
 # author: Mattia Sgro
 # lecture 1
 # implementation of Dijkstra and Floyd-Warshall algorithms for graph-theory course
+import heapq
 
 ### FLOYD-WARSHALL FUNCTIONS
 def mymin(a,b):
@@ -33,7 +34,7 @@ def fw(mat, n):
 
 
 ### DIJKSTRA FUNCTIONS
-def min_dist(d: dict(), q: set()):
+def min_dist(d: dict(), q: set()): # NAIVE min_dist, quadratic
     min = float("inf")
     min_n = None
     for x in d.keys():
@@ -44,7 +45,7 @@ def min_dist(d: dict(), q: set()):
                 min_n = x
     return min_n
 
-
+    
 def remove(g, u):
     g.pop(u)
     for x in g.copy().keys():
@@ -77,9 +78,12 @@ def neig(g, q, u):
     # print("ret:", ret, " are neig of u:", u)
     return ret
 
+PRIO = True
+NAIVE = False
 
 def djk(g: dict(), s):
     q = set()  # set of verices
+    qp = [(0, s)]
     for n in g:
         q.add(n)
     # here I used dictionaries to be able to access nodes by label instead of indexes
@@ -87,19 +91,30 @@ def djk(g: dict(), s):
     d[s] = float(0)
     p = {n: None for n in g}  # dictionary of predecessors
 
-    while q != set():
-        u = min_dist(d, q)
-        # print("popped u:", u, " from q set")
-        q.remove(u)
+    if (NAIVE):
+        while q != set(): # naive
+            u = min_dist(d, q)
+            # print("popped u:", u, " from q set")
+            q.remove(u)
 
-        for v in neig(g, q, u):
-            alt = d[u] + length(u, v, g)
-            if alt < d[v]:
-                d[v] = alt
-                p[v] = u
-
-    return d, p
-
+            for v in neig(g, q, u):
+                alt = d[u] + length(u, v, g)
+                if alt < d[v]:
+                    d[v] = alt
+                    p[v] = u
+        return d, p
+    elif (PRIO):
+        while qp: # with priority queue
+            udist, u = heapq.heappop(qp)
+            if udist > d[u]:
+                continue
+            for v in neig(g, q, u):
+                alt = udist + length(u, v, g)
+                if alt < d[v]:
+                    d[v] = alt
+                    p[v] = u
+                    heapq.heappush(qp, (alt, v))
+        return d, p
 
 #### END DIJKSTRA FUNCTIONS
 
